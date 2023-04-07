@@ -1,131 +1,178 @@
-// ДОМАШНЕЕ ЗАДАНИЕ
+'use strict';
+//Домашнее задание
+// Создайте объект city1 (var city1 = {}), укажите у него свойства name 
+// (название города, строка) со значением «ГородN» и population 
+// (населенность города, число) со значением 10 млн.
 
-// Пример №1
-// Создайте переменные b1, b2, b3, b4, b5. Поместите в них результат выражений:
-// 5 % 3,
-// 3 % 5,
-// 5 + '3',
-// '5' - 3,
-// 75 + 'кг'
-// Результаты переменных вывести в console.log();
+// let city1 = {};
+// city1.name = 'ГородN';
+// city1.population = 10000000;
 
-let b1 = 5 % 3;
-let b2 = 3 % 5;
-let b3 = 5 + '3';
-let b4 = '5' - 3;
-let b5 = 75 + 'кг';
-console.log(b1);
-console.log(b2);
-console.log(b3);
-console.log(b4);
-console.log(b5);
+// Создайте объект city2 через нотацию {name: "ГородM", population: 1e6}.
 
-// Пример №2 
-// Напиши скрипт, который находит объем цилиндра высотой 10м (переменная heightC) и 
-// диаметром основания 4м (dC), результат поместите в переменную v.
+// let city2 = {
+//     name: 'ГородM',
+//     population: 1e6
+// }
 
-let heightC = 10;
-let dC = 4;
-let v = 10 * 4;
-console.log(v);
+// Создайте у объектов city1 и city2 методы getName(), которые вернут 
+// соответствующие названия городов.
 
-// Пример №3
-// Создайте переменные a=10 и b=2. Выведите на экран их сумму, разность, произведение и частное (результат деления).
+// let city1 = {};
+// city1.name = 'ГородN';
+// city1.population = 10000000;
+// city1.getName = function () {
+//     return city1.name
+// };
 
-// let a = 10; 
-// let b = 2;
-// console.log(a + b); 
-// console.log(a - b); 
-// console.log(a * b); 
-// console.log(a / b);
+// let city2 = {
+//     name: 'ГородM',
+//     population: 1e6,
+//     getName () {
+//         return this.name
+//     }
+// };
+//     city1.getName();
+//     city2.getName();
+//     console.log(city1.getName());
+//     console.log(city2.getName());
 
-// Пример №4
-//  Создайте переменные c=15 и d=2. Просуммируйте их, а результат присвойте переменной result. 
-//  Выведите на экран значение переменной result.
+// Создайте методы exportStr() у каждого из объектов. Этот метод должен 
+// возвращать информацию о городе в формате 
+// «name=ГородN\npopulation=10000000\n». Для второго города будет строка 
+// со своими значениями. Примечание: можно обращаться к каждому свойству 
+// через цикл for/in, но методы объекта возвращать не нужно.
 
-//let c = 15;
-//let d = 2;
-//let result = c + d;
+// let city1 = {};
+// city1.name = 'ГородN';
+// city1.population = 10000000;
+// city1.getName = function () {
+//     return city1.name
+// };
 
-//console.log(result);
+// city1.exportStr = function (){
+//     let result = '';
+//     for(let key in city1){
+//         if (typeof city1[key] != 'function')
+//         result += ` ${key}  =  ${city2[key]}`;     
+//     }
+//     return result
+//     };
+    
+// let city2 = {
+//     name: 'ГородM',
+//     population: 1e6,
+//     getName () {
+//         return this.name
+//     },
+//     exportStr () {
+//         let result = '';
+//         for(let key in city2){
+//             if (typeof city2[key] != 'function')
+//         result += ` ${key}  =  ${city2[key]}`;
+//     }
+//     return result
+//     }
+// };
 
-// Пример №5
-//  Создайте переменные a=10, b=2 и c=5. Выведите на экран их сумму.
+//     console.log(city1.getName());
+//     console.log(city2.getName());
 
-//let a = 10;
-//let b = 2;
-//let c = 5;
-//console.log(a + b + c);
+//     console.log(city1.exportStr());
+//     console.log(city2.exportStr());
 
-// Пример №6
-//  Создайте переменные a=17 и b=10. Отнимите от a переменную b и результат присвойте переменной c. 
-//  Затем создайте переменную d, присвойте ей значение 7. Сложите переменные c и d, а результат 
-//  запишите в переменную result. Выведите на экран значение переменной result.
+// Создайте глобальную функцию getObj(), которая возвращает this. 
+// А у каждого из объектов city1 или city2 метод getCity, который 
+// ссылается на getObj. Проверьте работу метода. Примечание: к объекту 
+// вызова можно обратиться через this..
 
-// let a = 17;
-// let b = 10;
-// let c = a - b;
-// let d = 7;
-// let result = c + d;
-// console.log(result);
+function getObj() {
+    return this
+};
 
-// Пример №7
-// Создайте переменную name и присвойте ей ваше имя. Выведите на экран фразу 'Привет, (Имя)!'.
+let city1 = {};
+city1.name = 'ГородN';
+city1.population = 10000000;
+city1.getCity = getObj;
+city1.getName = function () {
+    return city1.name
+};
 
-let name = 'Andrey';
-console.log("Привет " + name + "!");
+city1.exportStr = function (){
+    let result = '';
+        for(let key in city1){
+            if (typeof city1[key] != 'function')
+            result += ` ${key}  =  ${city2[key]}`;     
+        }
+        return result
+    };
+    
+let city2 = {
+    name: 'ГородM',
+    population: 1e6,
+    getCity: getObj,
+    getName () {
+        return city2.name
+    },
+    exportStr () {
+        let result = '';
+        for(let key in city2){
+            if (typeof city2[key] != 'function')
+        result += ` ${key}  =  ${city2[key]}`;
+    }
+    return result
+    }
+};
 
-// Пример №8
-// Создайте переменную age и присвойте ей ваш возраст. Выведите на экран 'Мне (Возраст) лет!'.
+console.log(city1.getName());
+console.log(city2.getName());
 
-let age = 28;
-console.log(`Мне ${age} лет!`);
+console.log(city1.exportStr());
+console.log(city2.exportStr());
 
-// Пример №9
-// Создайте переменную str и присвойте ей значение 'abcde'. Обращаясь к отдельным символам этой строки выведите 
-// на экран символ 'a', символ 'c', символ 'e'.
+console.log(city1.getCity());
+console.log(city2.getCity());
 
-let str = 'abcde';
-console.log(str[0]);
-console.log(str[2]);
-console.log(str[4]);
+// Создайте массив d1 с числовыми величинами 45,78,10,3.  
+// Добавьте в массив d1 еще одно число ( d1[7] = 100). 
+// Выведите в консоль весь массив и его элементы с индексами 6 и 7.
 
-//Пример №10
-// Напишите скрипт, который считает количество секунд в часе, в сутках, в месяце.
-
-let secondsHour = 60*60;
-let secondsDay = secondsHour * 24;
-let secondsMonth = secondsDay * 30;
-
-//Пример №11
-//Переделайте этот код так, чтобы в нем использовались операции +=, -=, *=, /=. 
-// Количество строк кода при этом не должно измениться.
-// let num = 47;
-// num = num + 7;
-// num = num - 18;
-// num = num * 10;
-// num = num / 15;
-// console.log(num);
-
-// let num = 47;
-// num += 7;
-// num -= 18;
-// num *= 10;
-// num /= 15;
-// console.log(num);
+let d1 = [45, 78, 10, 3];
+d1[7] = 100;
+console.log(d1);
+console.log(d1[6]);
+console.log(d1[7]);
 
 
-// Пример №12
-// Переделайте этот код так, чтобы в нем использовались операции ++ и --. 
-// Количество строк кода при этом не должно измениться.
-// let num = 10;
-// num = num + 1;
-// num = num + 1;
-// num = num - 1;
-// console.log(num);
+// Создайте массив d2 с числовыми величинами 45,78,10,3. 
+// Посчитайте в переменную sum2 сумму чисел в нем, при помощи цикла for.
 
-let num = 10;
-num = ++ num;
-num = num ++;
-num = num --;
-console.log(num);
+let d2 = [45, 78, 10, 3];
+let sum2 = 0;
+for(let i = 0; i < d2.length; i++){
+    sum2 = sum2 + d2[i]
+}
+console.log(sum2);
+
+// Создайте массив d3 с числовыми величинами 45,78,10,3. 
+// Добавьте в массив d3 еще одно число (например, d[7] = 100) 
+// Посчитайте в переменную sum3 сумму чисел в нем, при помощи цикла for/in.
+
+let d3 = [45, 78, 10, 3];
+d3[7] = 100;
+let sum3 = 0;
+for(let i in d3){
+    sum3 = sum3 + d3[i];
+    i++
+}
+console.log(sum3);
+
+// Создайте массив d4 с числовыми величинами 45,78,10,3. 
+// Напишите функцию сортировки my(a,b), которая при вызове d4.sort(my) 
+// отсортирует элементы массива по убыванию чисел. Вызовите d4.sort(my)
+
+let d4 = [45,78,10,3];
+function my(a, b){
+    return b - a
+}
+console.log (d4.sort(my))
