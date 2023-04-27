@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     // Timer
-    const timeEnd = '2023-04-27';
+    const timeEnd = '2023-04-28';
 
     function getTimeRemaining (endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -69,10 +69,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 minutes.innerHTML = t.minutes,
                 seconds.innerHTML = t.seconds
             if(t.total <= 0) {
-                days.innerHTML = 00,
-                hours.innerHTML = 00,
-                minutes.innerHTML = 00,
-                seconds.innerHTML = 00,
+                days.innerHTML = '00',
+                hours.innerHTML = '00',
+                minutes.innerHTML = '00',
+                seconds.innerHTML = '00'
                 clearInterval(timeInterval);
             };
         };
