@@ -141,35 +141,52 @@ window.addEventListener('DOMContentLoaded', () => {
           total = document.querySelector('#total');
           current = document.querySelector('#current');
 
-    let slideIndex = 0;
+    let slideIndex = 1;
 
-    slides.forEach((slide, index) => {
-        if (index !== 0) slide.classList.add('hidden');
-    });
-        
-    function showSlides(index){
-        slides[slideIndex].classList.remove('active');
-        slides[index].classList.add('active');
-        slideIndex = index;
+    showSlides(slideIndex);
+
+    if(slides.length < 10){
+        total.textContent = `0${slides.length}`;
+    } else {
+        total.textContent = slides.length;
     }
 
-    next.addEventListener('click', () => {
-        let index = slideIndex + 1;
-        if (index >= slides.length) {
-            index = 0;
-        }
-        showSlides(index);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    
+    prev.addEventListener('click', () => {
+        plusSlides(-1);
     });
 
-    prev.addEventListener('click', () => {
-        let index = slideIndex - 1;
-        if (index < 0) {
-            index = slides.length - 1;
+    next.addEventListener('click', () => {
+        plusSlides(1);
+    });
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1
         }
-        showSlides(index);
-    })
-    showSlides(slideIndex);
-    
+        if (n < 1) {
+              slideIndex = slides.length
+        }
+      
+        for (let slide of slides) {
+              slide.classList.remove('show');
+              slide.classList.add('hidden');  
+        }
+          
+        slides[slideIndex - 1].classList.add('show');
+        slides[slideIndex - 1].classList.remove('hidden');
+
+        if(slides.length < 10){
+            current.textContent = `0${slideIndex}`;
+        } else {
+            current.textContent = slideIndex;
+        }
+      }
+
+// Из урока
     // showSlides(slideIndex);
 
     //     if(slides.length < 10){
